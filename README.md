@@ -53,7 +53,7 @@ If you choose to use Redis database, you can use the [Jedis](https://github.com/
 **Adding library dependencies.**
 Add the dependencies for Gson and commons-cli to `pom.xml`. Read the [Maven tutorial](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html). Because we are using the IntelliJ IDE, if we click on the `Run` button, the Maven build steps will be automatically performed. The snippet from `pom.xml` to add the Gson and Apache Commons libraries are shown here. Please add the Jedis or Postgres JDBC dependency accordingly.
 
-````
+```
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -67,13 +67,13 @@ Add the dependencies for Gson and commons-cli to `pom.xml`. Read the [Maven tuto
         </dependency>
 
     </dependencies>
-````
+```
 
 **Class design**
 Study the `input.json` file provided. JSON (Javascript Object Notation) is a popular data format for exchanging data between applications. Each JsonObject consists of multiple key-value pairs. You can find more information about [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) here. It will also be covered in the class.
 
 Every social media post can either be a leaf post or consist of child posts, depending on whether or not the `thread` object contains a `replies` key or not. The structure of the JSON document is as follows:
-````
+```
 {
     "feed": [
         {
@@ -92,7 +92,7 @@ Every social media post can either be a leaf post or consist of child posts, dep
          ....
       ]
 }               
-````
+```
 The structure describes a nested structure for each thread, where each post can have multiple replies.
 1. The `feed` key has a `JSonArray` consisting of multiple `JsonObjects` mapping to the key `thread`.
 2. The JSONObject mapping to the `thread` key consists of many key-value pairs. The ones we are interested in are `post` and `replies`.
@@ -152,14 +152,14 @@ We will write JUnit test cases for the Analysis classes designed in the previous
 
 To use JUnit testing framework, we first will have to add the JUnit jar library to `pom.xml` and run `mvn clean install` in IntelliJ terminal. We will use JUnit version 5.9.3 for our purposes.
 
-````
+```
 <dependency>
     <groupId>org.junit.jupiter</groupId>
     <artifactId>junit-jupiter-api</artifactId>
     <version>5.9.3</version> 
     <scope>test</scope>
 </dependency>
-````
+```
 
 We will create a new class under the `tests/` directory. If your basic analyzer is called `BasicAnalyzer.java`, then the convention is that your test class should be called `BasicAnalyzerTest.java`. In that class add separate JUnit test methods to test each of the functions of the BasicAnalyzer.java class. Do the same for the weighted analysis class. Make sure to test all corner cases, such as empty posts, empty thread, _very_ long posts, and so on. We will run our own set of JUnit tests on the code, so it is in your benefit if you thoroughly test your code. Add all the required assertion checks.
 
@@ -181,3 +181,5 @@ To make the final submission, commit your code to the Github repo and tag it. In
 
 
 Your submission will be run against different (and larger) JSON files.
+
+![Build Status](../../actions/workflows/maven.yml/badge.svg)

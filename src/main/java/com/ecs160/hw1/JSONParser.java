@@ -11,7 +11,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class parse_json {
+public class JSONParser {
     public List<Post> parseJsonFromFile(String filePath) throws FileNotFoundException {
         JsonElement element = JsonParser.parseReader(new java.io.FileReader(filePath));
         return parseJsonElement(element);
@@ -19,7 +19,7 @@ public class parse_json {
 
     public List<Post> parseJson() {
         JsonElement element = JsonParser.parseReader(new InputStreamReader(
-                parse_json.class.getClassLoader().getResourceAsStream("input.json")));
+                JSONParser.class.getClassLoader().getResourceAsStream("input.json")));
         return parseJsonElement(element);
     }
 
@@ -96,4 +96,4 @@ public class parse_json {
         
         return new Post(id, text, createdAt, replyCount);
     }
-}
+} 

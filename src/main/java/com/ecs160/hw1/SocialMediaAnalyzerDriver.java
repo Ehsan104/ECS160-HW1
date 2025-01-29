@@ -18,7 +18,7 @@ public class SocialMediaAnalyzerDriver {
             boolean weighted = Boolean.parseBoolean(cmd.getOptionValue("weighted", "false"));
             String filePath = cmd.getOptionValue("file");
             
-            parse_json jsonParser = new parse_json();
+            JSONParser jsonParser = new JSONParser();
             List<Post> posts;
             
             if (filePath != null) {
